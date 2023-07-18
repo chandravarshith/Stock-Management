@@ -1,0 +1,57 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Add Product";
+}
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Add Product</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary=All></div>
+        <input asp-for="AvailabilityStatus" hidden value="default" />
+        <div class="row pb-4">
+            <div class="col-4 text-end">
+                <label asp-for="Name">Name:</label>
+            </div>
+             <div class="col-4">
+                <input asp-for="Name" style="width:300px" /><br />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+         <div class="row pb-4">
+            <div class="col-4 text-end">
+                <label asp-for="AvailableQuantity">Quantity:</label>
+            </div>
+             <div class="col-4">
+                <input asp-for="AvailableQuantity" style="width:300px" /><br />
+                <span asp-validation-for="AvailableQuantity" class="text-danger"></span>
+            </div>
+        </div>
+         <div class="row pb-6">
+            <div class="col-4 text-end">
+                <label asp-for="Price">Price:</label>
+            </div>
+             <div class="col-4">
+                <input asp-for="Price" style="width:300px" /><br />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+        </div>
+        <br />
+        <div class="container mt-4">
+             <div class="col-md-12 text-center" style="width:975px">
+                <button type="submit" class="btn btn-primary" style="width:150px">Add</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a asp-controller="Product" asp-action="Index" class="btn btn-outline-secondary" style="width:150px">back</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@*Client Side validation*@
+@*@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}*@
+

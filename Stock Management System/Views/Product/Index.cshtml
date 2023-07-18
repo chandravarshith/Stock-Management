@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "View Products";
+}
+
+<div class="container p-3">
+    <div class="row pt-3">
+        <div class="col-6">
+            <h2 class="text-primary">Products</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Product" asp-action="AddProduct" class="btn btn-primary">
+               <i class="bi bi-plus-circle"></i>&nbsp; Add Product
+            </a>
+        </div>
+    </div>
+    <br />
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Available</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Dispatched</th>
+            <th>Delivered</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.AvailableQuantity</td>
+                <td>@product.Price</td>
+                <td>@product.AvailabilityStatus</td>
+                <td>@product.DispatchedQuantity</td>
+                <td>@product.DeliveredQuantity</td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Product" asp-action="EditProduct" asp-route-id="@product.Id"
+                        class="btn btn-info"><i class="bi bi-pencil-square"></i></a>
+                    </div>
+                </td>
+                <td>
+                    <a asp-controller="Product" asp-action="DeleteProduct" asp-route-id="@product.Id"
+                        class="btn btn-warning"><i class="bi bi-trash3-fill"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+</div>
